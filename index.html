@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f6f1">
+  <title>Gather &amp; Graze — Recipe Book</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Gather and Graze home" style="color:inherit;text-decoration:none">
+        <span class="brand-mark" aria-hidden="true">✳</span>
+        <span class="brand-name">gather &amp; graze</span>
+      </a>
+      <span class="top-note">A little home for your favorite recipes</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Your personal recipe book</p>
+          <h1 id="page-title">Made to be<br>shared.</h1>
+          <p class="hero-copy">Keep the dishes you love close at hand. Add a recipe, save its story, and find inspiration for whatever is cooking.</p>
+        </div>
+        <div class="recipe-count" aria-live="polite">
+          <strong id="recipe-count">0</strong>
+          <span>recipes saved</span>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="panel form-panel" aria-labelledby="form-title">
+          <div class="panel-heading">
+            <div>
+              <h2 id="form-title">Add a recipe</h2>
+              <p>Start collecting something delicious.</p>
+            </div>
+            <span aria-hidden="true" style="font-size:21px">✎</span>
+          </div>
+          <form id="recipe-form">
+            <div class="field">
+              <label class="form-label" for="title">Recipe title <span aria-hidden="true">*</span></label>
+              <input id="title" name="title" type="text" maxlength="80" placeholder="e.g. Sunday tomato pasta" required>
+            </div>
+            <div class="field">
+              <label class="form-label" for="ingredients">Ingredients <span aria-hidden="true">*</span></label>
+              <textarea id="ingredients" name="ingredients" maxlength="3000" placeholder="Add one ingredient per line&#10;2 cups cherry tomatoes&#10;3 cloves garlic" required></textarea>
+              <p class="field-hint">One ingredient per line makes your list easy to read.</p>
+            </div>
+            <div class="field">
+              <label class="form-label" for="instructions">Instructions <span aria-hidden="true">*</span></label>
+              <textarea id="instructions" name="instructions" maxlength="6000" placeholder="How do you bring it all together?" required></textarea>
+            </div>
+            <div class="field">
+              <label class="form-label" for="image">Recipe image <span style="font-weight:500;color:#929a91">(optional)</span></label>
+              <div class="upload-box">
+                <span class="upload-icon" aria-hidden="true">↑</span>
+                <span class="upload-copy">
+                  <strong id="upload-name">Choose a food photo</strong>
+                  <span>JPG, PNG, GIF or WebP · up to 2 MB</span>
+                </span>
+                <label class="upload-button" for="image">Browse</label>
+                <input id="image" name="image" type="file" accept="image/jpeg,image/png,image/gif,image/webp">
+              </div>
+              <img id="image-preview" class="image-preview" alt="Selected recipe image preview">
+            </div>
+            <div class="button-row">
+              <button id="submit-button" class="button button-primary" type="submit">＋ <span>Add recipe</span></button>
+              <button id="cancel-button" class="button button-secondary" type="button" hidden>Cancel</button>
+            </div>
+            <p id="form-status" class="status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="recipes-section" aria-labelledby="recipes-title">
+          <div class="recipes-toolbar">
+            <h2 id="recipes-title">The collection</h2>
+            <label class="search-box">
+              <span class="sr-only">Search recipes</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+              <input id="search" type="search" placeholder="Search title or ingredients…" autocomplete="off">
+            </label>
+          </div>
+          <div id="recipe-grid" class="recipe-grid" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">Gather good things. Save them for later.</footer>
+  </div>
+
+  <dialog id="recipe-dialog" aria-labelledby="dialog-title">
+    <img id="dialog-image" class="dialog-image" alt="" hidden>
+    <div class="dialog-body">
+      <div class="dialog-top">
+        <div>
+          <p class="card-kicker">From your collection</p>
+          <h2 id="dialog-title"></h2>
+        </div>
+        <button id="dialog-close" class="dialog-close" type="button" aria-label="Close recipe">×</button>
+      </div>
+      <h3>Ingredients</h3>
+      <ul id="dialog-ingredients" class="ingredients-list"></ul>
+      <h3>Instructions</h3>
+      <p id="dialog-instructions" class="dialog-text"></p>
+      <div class="button-row">
+        <button id="dialog-edit" class="button button-secondary" type="button">Edit recipe</button>
+        <button id="dialog-done" class="button button-primary" type="button">Done</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
